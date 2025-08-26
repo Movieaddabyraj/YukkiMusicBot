@@ -1,10 +1,21 @@
-# Schema documented at https://render.com/docs/yaml-spec
 services:
-  - type: web # valid values: https://render.com/docs/yaml-spec#type
-    name: media-parser-bot
-    # env: docker # valid values: https://render.com/docs/yaml-spec#environment
-    plan: free # optional; defaults to starter
-    runtime: python
-    buildCommand: "./build.sh"
-    startCommand: "./start.sh"
-    # numInstances: 0
+  - type: web
+    name: frozen-music-bot
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python main.py"
+    envVars:
+      - key: API_HASH
+        sync: false
+      - key: API_ID
+        sync: false
+      - key: ASSISTANT_SESSION
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: OWNER_ID
+        sync: false
+      - key: MongoDB_url
+        sync: false
+
